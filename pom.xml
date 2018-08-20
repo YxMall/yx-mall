@@ -6,7 +6,7 @@
     <groupId>com.smile</groupId>
     <artifactId>yx-mall</artifactId>
     <version>${yx.version}</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>yx-mall</name>
     <description>YX商城</description>
@@ -28,6 +28,9 @@
         <spring-boot.version>1.5.15.RELEASE</spring-boot.version>
         <lombok.version>1.16.20</lombok.version>
     </properties>
+
+
+
 
     <!--公共依赖-->
     <dependencies>
@@ -83,6 +86,11 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <modules>
+        <module>eureka-server</module>
+        <module>config-server</module>
+    </modules>
 
     <build>
         <pluginManagement>

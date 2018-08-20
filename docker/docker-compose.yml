@@ -1,0 +1,9 @@
+version: '2'
+services:
+  pig-eureka:
+    build:
+      context: ./
+      dockerfile: Dockerfile-eureka
+    restart: always
+    ports:
+    - 9001:9001
