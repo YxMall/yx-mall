@@ -1,4 +1,4 @@
-package com.smile.yx.eureka;
+package com.smile.yx.config;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class EurekaServerApplicationTests {
+public class ConfigServerApplicationTests {
 
     @Test
     public void contextLoads() {
