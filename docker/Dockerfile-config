@@ -1,7 +1,7 @@
 FROM java:8-jre
-MAINTAINER smile
+MAINTAINER Pig lengleng <wangiegie@gmail.com>
 
 ADD ./jar/config-server.jar /app/
-CMD ["java", "-Xmx200m", "-jar","/app/config-server.jar"]
+CMD ["java", "-Xmx200m", "-jar", "/app/config-server.jar"]
 
-EXPOSE 9999
+EXPOSE 4001
