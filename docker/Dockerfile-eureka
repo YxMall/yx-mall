@@ -2,6 +2,6 @@ FROM java:8-jre
 MAINTAINER smile
 
 ADD ./jar/eureka-server.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/eureka-server.jar"]
+CMD ["java", "-Xmx200m", "-jar","/app/eureka-server.jar"]
 
 EXPOSE 9001

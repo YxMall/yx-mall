@@ -38,7 +38,7 @@ eureka:
     registry-fetch-interval-seconds: 10
 ---
 spring:
-  profiles: prd
+  profiles: prod
   rabbitmq:
     host: 47.106.35.76
     port: 5682
