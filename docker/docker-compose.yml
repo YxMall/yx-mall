@@ -10,7 +10,7 @@ services:
   yx-config:
     build:
       context: ./
-      dockerfile: Dockerfile-eureka
+      dockerfile: Dockerfile-config
     restart: always
     ports:
     - 9002:9002
