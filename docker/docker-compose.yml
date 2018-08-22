@@ -10,7 +10,7 @@ services:
 
   yx-config:
     links:
-      - yx-eureka:eureka
+    - yx-eureka:eureka
     build:
       context: ./
       dockerfile: Dockerfile-config
