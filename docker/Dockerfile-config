@@ -4,4 +4,4 @@ MAINTAINER smile
 ADD ./jar/config-server.jar /app/
 CMD ["java", "-Xmx200m", "-jar","/app/config-server.jar"]
 
-EXPOSE 9002
+EXPOSE 9999
