@@ -8,9 +8,9 @@ services:
     ports:
     - 9001:9001
 
-  pig-config:
+  yx-config:
     links:
-    - eureka-server:eureka
+    - yx-server:eureka
     build:
       context: ./
       dockerfile: Dockerfile-config

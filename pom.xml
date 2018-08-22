@@ -90,6 +90,7 @@
     <modules>
         <module>eureka-server</module>
         <module>config-server</module>
+        <module>yx-visual</module>
     </modules>
 
     <build>
