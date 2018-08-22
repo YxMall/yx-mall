@@ -56,4 +56,4 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://smile:123456@localhost:9001/eureka
+      defaultZone: http://smile:123456@111.230.46.97:9001/eureka
