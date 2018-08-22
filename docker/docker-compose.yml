@@ -10,7 +10,7 @@ services:
 
   pig-config:
     links:
-    - pig-eureka:eureka
+    - eureka-server:eureka
     build:
       context: ./
       dockerfile: Dockerfile-config
