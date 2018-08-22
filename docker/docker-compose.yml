@@ -1,9 +1,16 @@
 version: '2'
 services:
-  pig-eureka:
+  yx-eureka:
     build:
       context: ./
       dockerfile: Dockerfile-eureka
     restart: always
     ports:
     - 9001:9001
+  yx-config:
+    build:
+      context: ./
+      dockerfile: Dockerfile-eureka
+    restart: always
+    ports:
+    - 9002:9002
