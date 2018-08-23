@@ -14,4 +14,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-config
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
     restart: always
