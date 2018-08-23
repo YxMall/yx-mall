@@ -27,6 +27,9 @@
         <spring.cloud.version>Edgware.SR4</spring.cloud.version>
         <spring-boot.version>1.5.15.RELEASE</spring-boot.version>
         <lombok.version>1.16.20</lombok.version>
+        <spring-boot-admin-server.version>1.5.7</spring-boot-admin-server.version>
+        <spring-boot-admin-server-ui.version>1.5.7</spring-boot-admin-server-ui.version>
+        <spring-boot-admin-server-ui-turbine.version>1.5.7</spring-boot-admin-server-ui-turbine.version>
     </properties>
 
 

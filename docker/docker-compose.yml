@@ -4,6 +4,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-eureka
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
     restart: always
     ports:
     - 9001:9001
