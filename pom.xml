@@ -33,8 +33,6 @@
     </properties>
 
 
-
-
     <!--公共依赖-->
     <dependencies>
         <!--注册中心-->
