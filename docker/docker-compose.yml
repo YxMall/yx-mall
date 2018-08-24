@@ -29,3 +29,5 @@ services:
     environment:
     - "SPRING_PROFILES_ACTIVE=prod"
     restart: always
+    ports:
+    - 9003:9003
