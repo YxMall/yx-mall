@@ -19,3 +19,13 @@ services:
     environment:
       - "SPRING_PROFILES_ACTIVE=prod"
     restart: always
+
+  yx-monitor:
+    links:
+    - yx-eureka:eureka
+    build:
+      context: ./
+      dockerfile: Dockerfile-monitor
+    environment:
+    - "SPRING_PROFILES_ACTIVE=prod"
+    restart: always

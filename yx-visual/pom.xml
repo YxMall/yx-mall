@@ -8,8 +8,11 @@
         <version>${yx.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>yx-visual</artifactId>
+    <packaging>pom</packaging>
+    <description>yxmall视图</description>
 
-
+    <modules>
+        <module>yx-monitor</module>
+    </modules>
 </project>
