@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>yx-visual</artifactId>
     <packaging>pom</packaging>
-    <description>yxmall视图</description>
+    <description>视图管理模块</description>
 
     <modules>
         <module>yx-monitor</module>
