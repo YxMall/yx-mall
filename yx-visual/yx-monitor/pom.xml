@@ -9,13 +9,13 @@
     <packaging>jar</packaging>
 
     <name>yx-monitor</name>
-    <description>监控服务</description>
+    <description>监控模块</description>
 
     <parent>
         <groupId>com.smile</groupId>
         <artifactId>yx-visual</artifactId>
         <version>${yx.version}</version>
-        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -34,19 +34,16 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-turbine</artifactId>
         </dependency>
-        <!--监控-->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-server-ui-turbine</artifactId>
             <version>${spring-boot-admin-server-ui-turbine.version}</version>
         </dependency>
-        <!--熔断-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix</artifactId>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
