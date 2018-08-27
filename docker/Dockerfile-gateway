@@ -1,0 +1,7 @@
+FROM java:8-jre
+MAINTAINER smile
+
+ADD ./jar/yx-gateway.jar /app/
+CMD ["java", "-Xmx200m", "-jar","/app/yx-gateway.jar"]
+
+EXPOSE 9004

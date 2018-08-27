@@ -31,3 +31,15 @@ services:
     restart: always
     ports:
     - 9003:9003
+
+  yx-gateway:
+    links:
+    - yx-eureka:eureka
+    build:
+      context: ./
+      dockerfile: Dockerfile-gateway
+    environment:
+    - "SPRING_PROFILES_ACTIVE=prod"
+    restart: always
+    ports:
+    - 9004:9004

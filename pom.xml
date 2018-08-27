@@ -30,6 +30,8 @@
         <spring-boot-admin-server.version>1.5.7</spring-boot-admin-server.version>
         <spring-boot-admin-server-ui.version>1.5.7</spring-boot-admin-server-ui.version>
         <spring-boot-admin-server-ui-turbine.version>1.5.7</spring-boot-admin-server-ui-turbine.version>
+        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+        <swagger2.version>2.8.0</swagger2.version>
     </properties>
 
 
