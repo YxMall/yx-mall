@@ -23,7 +23,7 @@ endpoints:
 spring:
   profiles: dev
   rabbitmq:
-    host: 47.106.35.76
+    host: 111.230.46.97
     port: 5672
     username: guest
     password: guest
