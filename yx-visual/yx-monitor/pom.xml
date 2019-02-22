@@ -5,7 +5,7 @@
 
     <groupId>com.smile</groupId>
     <artifactId>yx-monitor</artifactId>
-    <version>${yx.version}</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>yx-monitor</name>
@@ -14,34 +14,31 @@
     <parent>
         <groupId>com.smile</groupId>
         <artifactId>yx-visual</artifactId>
-        <version>${yx.version}</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.0.0</version>
     </parent>
 
+
     <dependencies>
-        <!--admin-->
+        <!--监控服务端-->
         <dependency>
             <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server</artifactId>
-            <version>${spring-boot-admin-server.version}</version>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>${spring-boot-admin.version}</version>
         </dependency>
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server-ui</artifactId>
-            <version>${spring-boot-admin-server-ui.version}</version>
-        </dependency>
+        <!--配置中心客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-turbine</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
+        <!--web 模块-->
         <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server-ui-turbine</artifactId>
-            <version>${spring-boot-admin-server-ui-turbine.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--security-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-hystrix</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
 
@@ -50,9 +47,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <finalName>${project.name}</finalName>
-                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

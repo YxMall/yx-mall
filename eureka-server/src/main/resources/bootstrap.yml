@@ -2,44 +2,43 @@ server:
   port: 9001
 
 spring:
+  security:
+    user:
+      name: smile
+      password: 123456
   application:
     name: yx-eureka-server
-  profiles:
-    active: prod
+  cloud:
+    config:
+      enabled: false
 
-security:
-  basic:
-    enabled: true # 启用身份认证
-  user:
-    name: smile # 定义用户名
-    password: 123456 # 定义密码
-
----
-spring:
-  profiles: dev
+# docker-compose部署时候 hostname 换成pig-eureka
+# 类似的 redis 使用pig-redis ,gateway 换成 pig-gateway
 eureka:
-  client:
-    fetch-registry: false
-    register-with-eureka: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   instance:
-    hostname: localhost
-  server:  #配置属性，但由于 Eureka 自我保护模式以及心跳周期长的原因，经常会遇到 Eureka Server 不剔除已关停的节点的问题
-    enable-self-preservation: false
-    eviction-interval-timer-in-ms: 5000
-
----
-spring:
-  profiles: prod
-eureka:
+    hostname: yx-eureka
+    # 使用Ip地址注册
+    prefer-ip-address: true
   client:
-    fetch-registry: false
+    # 注册到eureka
     register-with-eureka: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  instance:
-    hostname: localhost
+    # 同步注册信息
+    fetch-registry: false
+    service-url:
+      #      defaultZone: http://smile:123456@${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://smile:123456@localhost:${server.port}/eureka/
   server:
-    enable-self-preservation: true
+    #清理间隔（单位毫秒，默认是60*1000）
+    eviction-interval-timer-in-ms: 4000
+    # 设为false，关闭自我保护
+    enable-self-preservation: false
+    # 阈值因子，默认是0.85，如果阈值比最小值大，则自我保护模式开启
+    renewal-percent-threshold: 0.9
 
+
+# 加载所有的端点/默认只加载了 info / health
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

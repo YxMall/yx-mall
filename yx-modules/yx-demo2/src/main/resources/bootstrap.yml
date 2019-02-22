@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: yx-demo2
+  profiles:
+    active: dev
+# 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://smile:123456@localhost:9001/eureka
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 8001

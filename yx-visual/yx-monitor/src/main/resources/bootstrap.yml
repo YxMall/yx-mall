@@ -1,6 +1,6 @@
 spring:
   application:
-    name: yx-monitor
+    name: yx-demo2
   profiles:
     active: dev
   cloud:

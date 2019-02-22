@@ -5,46 +5,38 @@
 
     <groupId>com.smile</groupId>
     <artifactId>yx-mall</artifactId>
-    <version>${yx.version}</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <name>yx-mall</name>
     <description>YX商城</description>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.15.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
     <properties>
+        <spring-boot.version>2.0.8.RELEASE</spring-boot.version>
+        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <spring-platform.version>Cairo-SR5</spring-platform.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <javadoc.version>3.0.0</javadoc.version>
-        <yx.version>0.0.1-SNAPSHOT</yx.version>
-        <spring.cloud.version>Edgware.SR4</spring.cloud.version>
-        <spring-boot.version>1.5.15.RELEASE</spring-boot.version>
-        <lombok.version>1.16.20</lombok.version>
-        <spring-boot-admin-server.version>1.5.7</spring-boot-admin-server.version>
-        <spring-boot-admin-server-ui.version>1.5.7</spring-boot-admin-server-ui.version>
-        <spring-boot-admin-server-ui-turbine.version>1.5.7</spring-boot-admin-server-ui-turbine.version>
-        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
-        <swagger2.version>2.8.0</swagger2.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring-boot-admin.version>2.0.4</spring-boot-admin.version>
+        <hutool.version>4.4.3</hutool.version>
+        <mybatis-plus.version>3.0.6</mybatis-plus.version>
+        <kaptcha.version>0.0.9</kaptcha.version>
+        <velocity.version>1.7</velocity.version>
+        <jasypt.version>2.1.0</jasypt.version>
+        <security.oauth.version>2.3.3.RELEASE</security.oauth.version>
+        <jackson.modules>2.9.6</jackson.modules>
+        <docker.url>http://192.168.0.13:4243</docker.url>
+        <registry.url>192.168.0.13:5000</registry.url>
     </properties>
 
 
     <!--公共依赖-->
     <dependencies>
-        <!--注册中心-->
+        <!--eureka 客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <!--配置文件处理器-->
         <dependency>
@@ -52,16 +44,33 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--配置文件加密-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
         <!--监控-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!--监控客户端-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${spring-boot-admin.version}</version>
+        </dependency>
+        <!--断路器依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
         <!--Lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
         <!--测试依赖-->
         <dependency>
@@ -71,62 +80,98 @@
         </dependency>
     </dependencies>
 
+    <modules>
+        <module>eureka-server</module>
+        <module>config-server</module>
+        <module>yx-visual</module>
+        <module>yx-modules</module>
+    </modules>
+
     <dependencyManagement>
+        <!--维护依赖-->
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>io.spring.platform</groupId>
                 <artifactId>platform-bom</artifactId>
-                <version>Brussels-SR11</version>
+                <version>${spring-platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <modules>
-        <module>eureka-server</module>
-        <module>config-server</module>
-        <module>yx-gateway</module>
-        <module>yx-visual</module>
-    </modules>
-
     <build>
+        <finalName>${project.name}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                    </configuration>
                     <executions>
                         <execution>
                             <goals>
-                                <goal>build-info</goal>
+                                <goal>repackage</goal>
                             </goals>
                         </execution>
                     </executions>
                 </plugin>
+                <!--发布镜像到测试环境-->
                 <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.4.12</version>
                     <configuration>
-                        <target>${java.version}</target>
-                        <source>${java.version}</source>
-                        <encoding>UTF-8</encoding>
+                        <imageName>${registry.url}/${project.name}:0.0.1</imageName>
+                        <dockerHost>${docker.url}</dockerHost>
+                        <dockerDirectory>${project.basedir}</dockerDirectory>
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <directory>${project.build.directory}</directory>
+                                <include>${project.build.finalName}.jar</include>
+                            </resource>
+                        </resources>
+                        <serverId>docker-hub</serverId>
+                        <registryUrl>https://index.docker.io/v1/</registryUrl>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${javadoc.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <target>${maven.compiler.target}</target>
+                    <source>${maven.compiler.source}</source>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!--maven打jar包时带上git Commit相关信息-->
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.5</version>
+            </plugin>
+        </plugins>
     </build>
 
     <!-- 使用aliyun镜像 -->

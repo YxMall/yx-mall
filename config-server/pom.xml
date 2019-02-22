@@ -14,21 +14,19 @@
     <parent>
         <groupId>com.smile</groupId>
         <artifactId>yx-mall</artifactId>
-        <version>${yx.version}</version>
-        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+        <version>1.0.0</version>
     </parent>
 
     <dependencies>
-        <!--配置中心服务-->
+        <!--配置中心-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
-
-        <!--消息总线-->
+        <!--web 模块-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 
