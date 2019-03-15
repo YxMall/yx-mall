@@ -1,28 +1,11 @@
-server:
-  port: 9002
-
 spring:
   application:
-    name: yx-config-server
-  cloud:
-    cloud:
-      config:
-    eureka:
-      instance:
-        prefer-ip-address: true
-      client:
-        serviceUrl:
-          defaultZone: http://smile:123456@eureka:9001/eureka
-    config:
-      server:
-        git:
-          uri: https://github.com/YxMall/yx-config.git
-          default-label: ${spring.profiles.active}   #解决监控down
-      retry:
-        initial-interval: 3000
-        multiplier: 1.5
-        max-interval: 20000
-        max-attempts: 6
+    name: config-server
+  profiles:
+    active: dev
+
+server:
+  port: 9002
 
 # 暴露监控端点
 management:
@@ -30,5 +13,4 @@ management:
     web:
       exposure:
         include: '*'
-
 

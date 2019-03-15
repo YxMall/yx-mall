@@ -1,0 +1,9 @@
+server:
+  port: 8007
+
+spring:
+  application:
+    name: yx-stream
+  profiles:
+    active: dev
+

@@ -12,6 +12,7 @@ spring:
     stream:
       bindings:
         input:
+          destination: test-topic
           group: demo1 # group 用来保证不同实例不会重复消费
 # 注册中心配置
 eureka:

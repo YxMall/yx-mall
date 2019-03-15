@@ -1,0 +1,29 @@
+spring:
+  #配置中心
+  cloud:
+    config:
+      fail-fast: true #快速响应
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: config-server
+      label: ${spring.profiles.active}
+    stream:
+      bindings:
+        example-topic-input:
+          destination: test-topic
+        example-topic-output:
+          destination: test-topic
+  # 注册中心配置
+  rabbitmq:
+    host: 47.101.158.176
+    port: 5672
+    username: wangqing
+    password: wq19981023
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://smile:123456@localhost:9001/eureka

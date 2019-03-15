@@ -1,36 +1,31 @@
+server:
+  port: 5001
+
 spring:
   application:
-    name: yx-demo2
-  profiles:
-    active: dev
+    name: @artifactId@
+  #配置中心
   cloud:
     config:
       fail-fast: true
-      discovery:
-        service-id: yx-config-server
-        enabled: true
+      name: ${spring.application.name}
       profile: ${spring.profiles.active}
-      label: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: pigx-config
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
 
----
-spring:
-  profiles: dev
-eureka:
-  instance:
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 20
-  client:
-    serviceUrl:
-      defaultZone: http://smile:123456@localhost:9001/eureka
-    registry-fetch-interval-seconds: 10
-
----
-spring:
-  profiles: prod
+# 注册中心配置
 eureka:
   instance:
     prefer-ip-address: true
   client:
-    serviceUrl:
-      defaultZone: http://smile:123456@eureka:9001/eureka
+    service-url:
+      defaultZone: http://pig:pig@pigx-eureka:8761/eureka/
+turbine:
+  app-config: pigx-upms,pigx-auth
+  cluster-name-expression: new String("default")
+  combine-host-port: true

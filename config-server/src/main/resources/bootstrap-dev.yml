@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          default-label: ${spring.profiles.active}
+          uri: https://gitee.com/smalljop/yx-config.git
+      retry:
+        initial-interval: 3000 #重试间隔
+        multiplier: 1.5 #每次重试失败后，重试间隔所增加的倍数
+        max-interval: 20000 #最长重试间隔
+        max-attempts: 6   #最多重试6次
+
+  rabbitmq:
+    host: 47.101.158.176
+    port: 5672
+    username: wangqing
+    password: wq19981023
+eureka:
+  instance:
+    prefer-ip-address: true #Ip注册
+  client:
+    service-url:
+      defaultZone: http://smile:123456@localhost:9001/eureka

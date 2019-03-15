@@ -17,7 +17,7 @@ public class SinkReceiver {
 
 
     @StreamListener(Sink.INPUT)
-    public void receive(Object payload) {
-        log.info("receive message:{}", payload);
+    public void receive(String payload) {
+        log.info("payload:{}", payload);
     }
 }

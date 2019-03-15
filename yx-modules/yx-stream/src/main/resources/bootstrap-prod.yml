@@ -1,0 +1,19 @@
+spring:
+  #配置中心
+  cloud:
+    config:
+      fail-fast: true #快速响应
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: config-server
+      label: ${spring.profiles.active}
+  # 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://smile:123456@localhost:9001/eureka
+
